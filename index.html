@@ -2,23 +2,28 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Relógio com Alarme</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Digital+7&display=swap');
         
-        body {
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
             font-family: 'Digital-7', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
             background: black;
             color: #0F0;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 40px;
+            box-sizing: border-box;
         }
         #clock {
             font-size: 120px;
@@ -73,9 +78,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            overflow: auto;
+            padding: 20px;
+            box-sizing: border-box;
         }
         #goodMorning img {
-            max-width: 300px;
+            max-width: 90%;
             border-radius: 20px;
             margin-bottom: 10px;
             box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
