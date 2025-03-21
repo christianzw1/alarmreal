@@ -17,6 +17,8 @@
             background: black;
             color: #0F0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         #clock {
             font-size: 120px;
@@ -59,6 +61,40 @@
         button:hover {
             filter: brightness(1.2);
         }
+        #goodMorning {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 10;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #goodMorning img {
+            max-width: 300px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+        }
+        #goodMorning p {
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            color: #0F0;
+            margin-bottom: 20px;
+        }
+        #closePopup {
+            font-size: 20px;
+            padding: 10px 20px;
+            background: #0F0;
+            color: black;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -67,7 +103,13 @@
     <button onclick="setAlarm()">Definir Alarme</button>
     <button onclick="stopAlarm()">Parar Alarme</button>
     <audio id="alarmSound" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
-    
+
+    <div id="goodMorning">
+        <img src="./foto/WhatsApp Image 2025-03-20 at 10.17.26 PM.jpeg" alt="Foto da Namorada">
+        <p>Bom dia, amor! 💖</p>
+        <button id="closePopup" onclick="closePopup()">Fechar</button>
+    </div>
+
     <script>
         function updateClock() {
             const now = new Date();
@@ -81,6 +123,7 @@
         let alarmTime = null;
         let alarmPlaying = false;
         const alarmSound = document.getElementById("alarmSound");
+        const goodMorning = document.getElementById("goodMorning");
 
         function setAlarm() {
             alarmTime = document.getElementById("alarmTime").value;
@@ -100,7 +143,12 @@
             alarmSound.pause();
             alarmSound.currentTime = 0;
             alarmPlaying = false;
-            alarmTime = null; // Resetando o alarme
+            alarmTime = null;
+            goodMorning.style.display = 'flex';
+        }
+
+        function closePopup() {
+            goodMorning.style.display = 'none';
         }
 
         setInterval(updateClock, 1000);
