@@ -6,7 +6,7 @@
     <title>Relógio com Alarme</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Digital+7&display=swap');
-        
+
         html, body {
             margin: 0;
             padding: 0;
@@ -16,28 +16,28 @@
             background: black;
             color: #0F0;
             text-align: center;
+            overflow: hidden;
         }
         body {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            padding-top: 40px;
+            justify-content: center;
             box-sizing: border-box;
+            gap: 10px;
         }
         #clock {
-            font-size: 120px;
+            font-size: 80px;
             font-weight: bold;
-            margin-bottom: 20px;
-            padding: 20px;
+            padding: 10px;
             background: rgba(0, 0, 0, 0.8);
             border-radius: 20px;
             box-shadow: 0 4px 10px rgba(0, 255, 0, 0.5);
             letter-spacing: 8px;
         }
         input {
-            font-size: 24px;
-            padding: 10px;
+            font-size: 18px;
+            padding: 6px;
             border: none;
             border-radius: 10px;
             outline: none;
@@ -45,11 +45,12 @@
             background: #222;
             color: #0F0;
             border: 2px solid #0F0;
+            width: 80%;
         }
         button {
-            font-size: 22px;
-            padding: 10px 20px;
-            margin: 10px;
+            font-size: 18px;
+            padding: 8px 16px;
+            margin: 5px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
@@ -78,24 +79,25 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            overflow: auto;
             padding: 20px;
             box-sizing: border-box;
         }
         #goodMorning img {
-            max-width: 90%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
             border-radius: 20px;
             margin-bottom: 10px;
             box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
         }
         #goodMorning p {
-            font-size: 24px;
+            font-size: 20px;
             font-family: Arial, sans-serif;
             color: #0F0;
             margin-bottom: 20px;
         }
         #closePopup {
-            font-size: 20px;
+            font-size: 18px;
             padding: 10px 20px;
             background: #0F0;
             color: black;
