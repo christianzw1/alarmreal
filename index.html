@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio com Alarme</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Digital+7&display=swap');
+        
+        body {
+            font-family: 'Digital-7', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: black;
+            color: #0F0;
+            text-align: center;
+        }
+        #clock {
+            font-size: 120px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 255, 0, 0.5);
+            letter-spacing: 8px;
+        }
+        input {
+            font-size: 24px;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            text-align: center;
+            background: #222;
+            color: #0F0;
+            border: 2px solid #0F0;
+        }
+        button {
+            font-size: 22px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:first-of-type {
+            background: #0F0;
+            color: black;
+        }
+        button:last-of-type {
+            background: red;
+            color: white;
+        }
+        button:hover {
+            filter: brightness(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">00:00:00</div>
+    <input type="time" id="alarmTime">
+    <button onclick="setAlarm()">Definir Alarme</button>
+    <button onclick="stopAlarm()">Parar Alarme</button>
+    <audio id="alarmSound" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
+    
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            document.getElementById("clock").textContent = `${hours}:${minutes}:${seconds}`;
+            checkAlarm(hours, minutes);
+        }
+
+        let alarmTime = null;
+        let alarmPlaying = false;
+        const alarmSound = document.getElementById("alarmSound");
+
+        function setAlarm() {
+            alarmTime = document.getElementById("alarmTime").value;
+            if (alarmTime) {
+                alert(`Alarme definido para ${alarmTime}`);
+            }
+        }
+
+        function checkAlarm(hours, minutes) {
+            if (alarmTime === `${hours}:${minutes}` && !alarmPlaying) {
+                alarmSound.play();
+                alarmPlaying = true;
+            }
+        }
+
+        function stopAlarm() {
+            alarmSound.pause();
+            alarmSound.currentTime = 0;
+            alarmPlaying = false;
+            alarmTime = null; // Resetando o alarme
+        }
+
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
